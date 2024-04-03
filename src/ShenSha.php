@@ -496,10 +496,70 @@ class ShenSha
         ]
     ];
 
+    /** @var array 年柱/日柱查其余三柱，六十甲子 */
     private static $KW = [
         'name' => '空亡',
         'data' => [
-            ''
+            '甲子' => ['戌', '亥'],
+            '乙丑' => ['戌', '亥'],
+            '丙寅' => ['戌', '亥'],
+            '丁卯' => ['戌', '亥'],
+            '戊辰' => ['戌', '亥'],
+            '己巳' => ['戌', '亥'],
+            '庚午' => ['戌', '亥'],
+            '辛未' => ['戌', '亥'],
+            '壬申' => ['戌', '亥'],
+            '癸酉' => ['戌', '亥'],
+            '甲戌' => ['申', '酉'],
+            '乙亥' => ['申', '酉'],
+            '丙子' => ['申', '酉'],
+            '丁丑' => ['申', '酉'],
+            '戊寅' => ['申', '酉'],
+            '己卯' => ['申', '酉'],
+            '庚辰' => ['申', '酉'],
+            '辛巳' => ['申', '酉'],
+            '壬午' => ['申', '酉'],
+            '癸未' => ['申', '酉'],
+            '甲申' => ['午', '未'],
+            '乙酉' => ['午', '未'],
+            '丙戌' => ['午', '未'],
+            '丁亥' => ['午', '未'],
+            '戊子' => ['午', '未'],
+            '己丑' => ['午', '未'],
+            '庚寅' => ['午', '未'],
+            '辛卯' => ['午', '未'],
+            '壬辰' => ['午', '未'],
+            '癸巳' => ['午', '未'],
+            '甲午' => ['辰', '巳'],
+            '乙未' => ['辰', '巳'],
+            '丙申' => ['辰', '巳'],
+            '丁酉' => ['辰', '巳'],
+            '戊戌' => ['辰', '巳'],
+            '己亥' => ['辰', '巳'],
+            '庚子' => ['辰', '巳'],
+            '辛丑' => ['辰', '巳'],
+            '壬寅' => ['辰', '巳'],
+            '癸卯' => ['辰', '巳'],
+            '甲辰' => ['寅', '卯'],
+            '乙巳' => ['寅', '卯'],
+            '丙午' => ['寅', '卯'],
+            '丁未' => ['寅', '卯'],
+            '戊申' => ['寅', '卯'],
+            '己酉' => ['寅', '卯'],
+            '庚戌' => ['寅', '卯'],
+            '辛亥' => ['寅', '卯'],
+            '壬子' => ['寅', '卯'],
+            '癸丑' => ['寅', '卯'],
+            '甲寅' => ['子', '丑'],
+            '乙卯' => ['子', '丑'],
+            '丙辰' => ['子', '丑'],
+            '丁巳' => ['子', '丑'],
+            '戊午' => ['子', '丑'],
+            '己未' => ['子', '丑'],
+            '庚申' => ['子', '丑'],
+            '辛酉' => ['子', '丑'],
+            '壬戌' => ['子', '丑'],
+            '癸亥' => ['子', '丑'],
         ]
     ];
 
@@ -562,6 +622,8 @@ class ShenSha
         $this->mZhiSearch3Zhi();
         // 月支查日干支
         $this->mZhiSearchDGanZHi();
+        $this->yGanZhiSearch3Zhi();
+        $this->dGanZhiSearch3Zhi();
     }
 
     /**
@@ -774,6 +836,40 @@ class ShenSha
         ];
         foreach ($mzhi as $key => $row) {
             $this->$key[] = in_array($row, self::$TSR['data'][$this->monthZhi]) ? self::$TSR['name'] : '';
+        }
+    }
+
+    /**
+     * 年柱查其余三柱
+     * @return void
+     */
+    private function yGanZhiSearch3Zhi()
+    {
+        $yGanZhi = [
+            'monthShenSha' => $this->monthZhi,
+            'dayShenSha' => $this->dayZhi,
+            'timeShenSha' => $this->timeZhi,
+        ];
+        $yGZ = $this->yearGan . $this->yearZhi;
+        foreach ($yGanZhi as $key => $row) {
+            $this->$key[] = (isset(self::$KW['data'][$yGZ]) and in_array($row, self::$KW['data'][$yGZ])) ? self::$KW['name'] : '';
+        }
+    }
+
+    /**
+     * 日柱查其余三柱
+     * @return void
+     */
+    private function dGanZhiSearch3Zhi()
+    {
+        $dGanZhi = [
+            'yearShenSha' => $this->yearZhi,
+            'monthShenSha' => $this->monthZhi,
+            'timeShenSha' => $this->timeZhi,
+        ];
+        $dGZ = $this->dayGan . $this->dayZhi;
+        foreach ($dGanZhi as $key => $row) {
+            $this->$key[] = (isset(self::$KW['data'][$dGZ]) and in_array($row, self::$KW['data'][$dGZ])) ? self::$KW['name'] : '';
         }
     }
 }
