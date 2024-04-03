@@ -4,7 +4,7 @@ lunar是一款无第三方依赖的日历工具，支持公历(阳历)、农历(
 
 此版本基于composer，如果您不会，可以使用[单文件版本](https://github.com/6tail/lunar-php-standalone)。
 
-> 基于php5.3开发。
+> 基于php5.4开发。
 
 [English](https://github.com/6tail/lunar-php/blob/master/README_EN.md)
 
