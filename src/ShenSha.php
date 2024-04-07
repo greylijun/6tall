@@ -1239,8 +1239,8 @@ class ShenSha
         ];
         foreach ($dzhi as $key => $row) {
             $this->$key[] = in_array($row, self::$JYGR['data'][$this->dayGan]) ? self::$JYGR['name'] : '';
-            $this->$key[] = (isset(self::$TCGR['data'][$this->yearGan]) and in_array($row, self::$TCGR['data'][$this->yearGan])) ? self::$TCGR['name'] : '';
-            $this->$key[] = (isset(self::$FXGR['data'][$this->yearGan]) and in_array($row, self::$FXGR['data'][$this->yearGan])) ? self::$FXGR['name'] : '';
+            $this->$key[] = (isset(self::$TCGR['data'][$this->dayGan]) and in_array($row, self::$TCGR['data'][$this->dayGan])) ? self::$TCGR['name'] : '';
+            $this->$key[] = (isset(self::$FXGR['data'][$this->dayGan]) and in_array($row, self::$FXGR['data'][$this->dayGan])) ? self::$FXGR['name'] : '';
         }
     }
 
