@@ -200,7 +200,7 @@ class ShenSha
 
     /** @var array 日干查日支 */
     private static $SEDBR = [
-        'name' => '十恶大败日',
+        'name' => '十恶大败',
         'data' => [
             '甲' => ['辰'],
             '乙' => ['巳'],
@@ -664,7 +664,7 @@ class ShenSha
         ]
     ];
 
-    /** @var array 年干/日干查其余三地支 */
+    /** @var array 年干/日干查四地支 */
     private static $FXGR = [
         'name' => '福星贵人',
         'data' => [
@@ -951,6 +951,25 @@ class ShenSha
         ]
     ];
 
+    /** @var array 月支查四柱干支 */
+    private static $DXGR = [
+        'name' => '德秀贵人',
+        'data' => [
+            '寅' => ['丙', '丁', '戊', '癸'],
+            '午' => ['丙', '丁', '戊', '癸'],
+            '戌' => ['丙', '丁', '戊', '癸'],
+            '申' => ['壬', '癸', '戊', '己', '丙', '辛', '甲'],
+            '子' => ['壬', '癸', '戊', '己', '丙', '辛', '甲'],
+            '辰' => ['壬', '癸', '戊', '己', '丙', '辛', '甲'],
+            '巳' => ['庚', '辛', '乙', '庚'],
+            '酉' => ['庚', '辛', '乙', '庚'],
+            '丑' => ['庚', '辛', '乙', '庚'],
+            '亥' => ['甲', '乙', '丁', '壬'],
+            '卯' => ['甲', '乙', '丁', '壬'],
+            '未' => ['甲', '乙', '丁', '壬'],
+        ]
+    ];
+
     /**
      * 农历
      * @var Lunar
@@ -1016,8 +1035,8 @@ class ShenSha
         $this->lMonthZhi = $lMonthZhi;
         $this->dYunGan = $dYunGan;
         $this->dYunZhi = $dYunZhi;
-        // 年干/日干查地支
-        $this->yGanDGanSearchZhi();
+        // 年干查地支
+        $this->yGanSearchZhi();
         // 月支查四柱干支
         $this->mSearch4Gan();
         // 年支查其余三地支
@@ -1113,7 +1132,7 @@ class ShenSha
      * 年干/日干查地支
      * @return void
      */
-    private function yGanDGanSearchZhi()
+    private function yGanSearchZhi()
     {
         $zhi = [
             'yearShenSha' => $this->yearZhi,
@@ -1130,6 +1149,7 @@ class ShenSha
             $this->$key[] = (in_array($row, self::$TJGR['data'][$this->yearGan]) or in_array($row, self::$TJGR['data'][$this->dayGan])) ? self::$TJGR['name'] : '';
             $this->$key[] = (in_array($row, self::$WCGR['data'][$this->yearGan]) or in_array($row, self::$WCGR['data'][$this->dayGan])) ? self::$WCGR['name'] : '';
             $this->$key[] = (in_array($row, self::$GYGR['data'][$this->yearGan]) or in_array($row, self::$GYGR['data'][$this->dayGan])) ? self::$GYGR['name'] : '';
+            $this->$key[] = (isset(self::$FXGR['data'][$this->yearGan]) and in_array($row, self::$FXGR['data'][$this->yearGan])) ? self::$FXGR['name'] : '';
         }
     }
 
@@ -1151,6 +1171,7 @@ class ShenSha
         foreach ($gan as $key => $row) {
             $this->$key[] = in_array($row, self::$TDGR['data'][$this->monthZhi]) ? self::$TDGR['name'] : '';
             $this->$key[] = in_array($row, self::$YDGR['data'][$this->monthZhi]) ? self::$YDGR['name'] : '';
+            $this->$key[] = in_array($row, self::$DXGR['data'][$this->monthZhi]) ? self::$DXGR['name'] : '';
         }
     }
 
@@ -1240,7 +1261,6 @@ class ShenSha
         foreach ($dzhi as $key => $row) {
             $this->$key[] = in_array($row, self::$JYGR['data'][$this->dayGan]) ? self::$JYGR['name'] : '';
             $this->$key[] = (isset(self::$TCGR['data'][$this->dayGan]) and in_array($row, self::$TCGR['data'][$this->dayGan])) ? self::$TCGR['name'] : '';
-            $this->$key[] = (isset(self::$FXGR['data'][$this->dayGan]) and in_array($row, self::$FXGR['data'][$this->dayGan])) ? self::$FXGR['name'] : '';
         }
     }
 
@@ -1257,7 +1277,6 @@ class ShenSha
         foreach ($yGan as $key => $row) {
             $this->$key[] = in_array($row, self::$JYGR['data'][$this->yearGan]) ? self::$JYGR['name'] : '';
             $this->$key[] = (isset(self::$TCGR['data'][$this->yearGan]) and in_array($row, self::$TCGR['data'][$this->yearGan])) ? self::$TCGR['name'] : '';
-            $this->$key[] = (isset(self::$FXGR['data'][$this->yearGan]) and in_array($row, self::$FXGR['data'][$this->yearGan])) ? self::$FXGR['name'] : '';
         }
     }
 
@@ -1281,7 +1300,7 @@ class ShenSha
             $this->$key[] = in_array($row, self::$YR['data'][$this->dayGan]) ? self::$YR['name'] : '';
             $this->$key[] = (isset(self::$LX['data'][$this->dayGan]) and in_array($row, self::$LX['data'][$this->dayGan])) ? self::$LX['name'] : '';
             $this->$key[] = (isset(self::$HYS['data'][$this->dayGan]) and in_array($row, self::$HYS['data'][$this->dayGan])) ? self::$HYS['name'] : '';
-
+            $this->$key[] = (isset(self::$FXGR['data'][$this->dayGan]) and in_array($row, self::$FXGR['data'][$this->dayGan])) ? self::$FXGR['name'] : '';
         }
     }
 
