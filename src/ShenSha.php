@@ -719,7 +719,7 @@ class ShenSha
         ]
     ];
 
-    /** @var array 年支/日支查其余三地支 */
+    /** @var array 年支查其余三地支 */
     private static $SM = [
         'name' => '丧门',
         'data' => [
@@ -1237,7 +1237,6 @@ class ShenSha
             $this->$key[] = (isset(self::$DW['data'][$this->dayZhi]) and in_array($row, self::$DW['data'][$this->dayZhi])) ? self::$DW['name'] : '';
             $this->$key[] = in_array($row, self::$JS['data'][$this->dayZhi]) ? self::$JS['name'] : '';
             $this->$key[] = in_array($row, self::$WS['data'][$this->dayZhi]) ? self::$WS['name'] : '';
-            $this->$key[] = (isset(self::$SM['data'][$this->dayZhi]) and in_array($row, self::$SM['data'][$this->dayZhi])) ? self::$SM['name'] : '';
             $this->$key[] = (isset(self::$DK['data'][$this->dayZhi]) and in_array($row, self::$DK['data'][$this->dayZhi])) ? self::$DK['name'] : '';
             $this->$key[] = (isset(self::$PM['data'][$this->dayZhi]) and in_array($row, self::$PM['data'][$this->dayZhi])) ? self::$PM['name'] : '';
             $this->$key[] = (isset(self::$MS['data'][$this->dayZhi]) and in_array($row, self::$MS['data'][$this->dayZhi])) ? self::$MS['name'] : '';
