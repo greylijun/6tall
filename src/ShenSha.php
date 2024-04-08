@@ -110,7 +110,7 @@ class ShenSha
         ],
     ];
 
-    /** @var array 年干/日干查其余三支 */
+    /** @var array 年干/日干查四柱地支 */
     private static $JYGR = [
         'name' => '金舆贵人',
         'data' => [
@@ -649,10 +649,12 @@ class ShenSha
         ]
     ];
 
-    /** @var array 年干/日干查其余三地支 */
+    /** @var array 年干/日干查四地支 */
     private static $TCGR = [
         'name' => '天厨贵人',
         'data' => [
+            '甲' => ['巳'],
+            '乙' => ['午'],
             '丙' => ['巳'],
             '丁' => ['午'],
             '戊' => ['申'],
@@ -738,7 +740,7 @@ class ShenSha
         ]
     ];
 
-    /** @var array 年支/日支查其余三地支 */
+    /** @var array 年支查其余三地支 */
     private static $DK = [
         'name' => '吊客',
         'data' => [
@@ -835,66 +837,66 @@ class ShenSha
     private static $CG = [
         'name' => '词馆',
         'data' => [
-            '甲子' => ['巳'],
-            '乙丑' => ['巳'],
-            '甲午' => ['巳'],
-            '乙未' => ['巳'],
-            '庚辰' => ['巳'],
-            '辛巳' => ['巳'],
-            '庚戌' => ['巳'],
-            '辛亥' => ['巳'],
-            '壬申' => ['巳'],
-            '癸酉' => ['巳'],
-            '壬寅' => ['巳'],
-            '癸卯' => ['巳'],
-            '戊辰' => ['亥'],
-            '己巳' => ['亥'],
-            '戊戌' => ['亥'],
-            '己亥' => ['亥'],
-            '庚寅' => ['亥'],
-            '辛卯' => ['亥'],
-            '庚申' => ['亥'],
-            '辛酉' => ['亥'],
-            '壬午' => ['亥'],
-            '癸未' => ['亥'],
-            '壬子' => ['亥'],
-            '癸丑' => ['亥'],
-            '丙戌' => ['申'],
-            '丁亥' => ['申'],
-            '丙辰' => ['申'],
-            '丁巳' => ['申'],
-            '戊寅' => ['申'],
-            '己卯' => ['申'],
-            '戊申' => ['申'],
-            '己酉' => ['申'],
-            '庚午' => ['申'],
-            '辛未' => ['申'],
-            '庚子' => ['申'],
-            '辛丑' => ['申'],
-            '甲戌' => ['寅'],
-            '乙亥' => ['寅'],
-            '甲辰' => ['寅'],
-            '乙巳' => ['寅'],
-            '丙寅' => ['寅'],
-            '丁卯' => ['寅'],
-            '丙申' => ['寅'],
-            '丁酉' => ['寅'],
-            '戊子' => ['寅'],
-            '己丑' => ['寅'],
-            '戊午' => ['寅'],
-            '己未' => ['寅'],
-            '甲申' => ['申'],
-            '乙酉' => ['申'],
-            '甲寅' => ['申'],
-            '乙卯' => ['申'],
-            '丙子' => ['申'],
-            '丁丑' => ['申'],
-            '丙午' => ['申'],
-            '丁未' => ['申'],
-            '壬辰' => ['申'],
-            '癸巳' => ['申'],
-            '壬戌' => ['申'],
-            '癸亥' => ['申'],
+            '甲子' => ['申'],
+            '乙丑' => ['申'],
+            '甲午' => ['申'],
+            '乙未' => ['申'],
+            '庚辰' => ['申'],
+            '辛巳' => ['申'],
+            '庚戌' => ['申'],
+            '辛亥' => ['申'],
+            '壬申' => ['申'],
+            '癸酉' => ['申'],
+            '壬寅' => ['申'],
+            '癸卯' => ['申'],
+            '戊辰' => ['寅'],
+            '己巳' => ['寅'],
+            '戊戌' => ['寅'],
+            '己亥' => ['寅'],
+            '庚寅' => ['寅'],
+            '辛卯' => ['寅'],
+            '庚申' => ['寅'],
+            '辛酉' => ['寅'],
+            '壬午' => ['寅'],
+            '癸未' => ['寅'],
+            '壬子' => ['寅'],
+            '癸丑' => ['寅'],
+            '丙戌' => ['亥'],
+            '丁亥' => ['亥'],
+            '丙辰' => ['亥'],
+            '丁巳' => ['亥'],
+            '戊寅' => ['亥'],
+            '己卯' => ['亥'],
+            '戊申' => ['亥'],
+            '己酉' => ['亥'],
+            '庚午' => ['亥'],
+            '辛未' => ['亥'],
+            '庚子' => ['亥'],
+            '辛丑' => ['亥'],
+            '甲戌' => ['巳'],
+            '乙亥' => ['巳'],
+            '甲辰' => ['巳'],
+            '乙巳' => ['巳'],
+            '丙寅' => ['巳'],
+            '丁卯' => ['巳'],
+            '丙申' => ['巳'],
+            '丁酉' => ['巳'],
+            '戊子' => ['巳'],
+            '己丑' => ['巳'],
+            '戊午' => ['巳'],
+            '己未' => ['巳'],
+            '甲申' => ['亥'],
+            '乙酉' => ['亥'],
+            '甲寅' => ['亥'],
+            '乙卯' => ['亥'],
+            '丙子' => ['亥'],
+            '丁丑' => ['亥'],
+            '丙午' => ['亥'],
+            '丁未' => ['亥'],
+            '壬辰' => ['亥'],
+            '癸巳' => ['亥'],
+            '壬戌' => ['亥'],
+            '癸亥' => ['亥'],
         ]
     ];
 
@@ -970,6 +972,41 @@ class ShenSha
         ]
     ];
 
+    /** @var array 日干查四地支 */
+    private static $FR = [
+        'name' => '飞刃',
+        'data' => [
+            '甲' => ['酉'],
+            '乙' => ['申'],
+            '丙' => ['子'],
+            '丁' => ['亥'],
+            '戊' => ['子'],
+            '己' => ['亥'],
+            '壬' => ['午'],
+            '癸' => ['巳'],
+            '庚' => ['卯'],
+            '辛' => ['寅'],
+        ]
+    ];
+
+    /** @var array 月支查四地支 */
+    private static $XR = [
+        'name' => '血刃',
+        'data' => [
+            '寅' => ['丑'],
+            '卯' => ['未'],
+            '辰' => ['寅'],
+            '巳' => ['申'],
+            '午' => ['卯'],
+            '未' => ['酉'],
+            '申' => ['辰'],
+            '酉' => ['戌'],
+            '戌' => ['巳'],
+            '亥' => ['亥'],
+            '子' => ['午'],
+            '丑' => ['子'],
+        ]
+    ];
     /**
      * 农历
      * @var Lunar
@@ -1046,7 +1083,7 @@ class ShenSha
         // 日干查其余三地支
         $this->dGanSearch3Zhi();
         // 年干查其余三地支
-        $this->yGanSearch3Zhi();
+//        $this->yGanSearch3Zhi();
         // 日干查四地支
         $this->dGanSearch4Zhi();
         // 日干查日支
@@ -1063,6 +1100,8 @@ class ShenSha
         $this->mZhiSearchDayTimeZhi();
         // 年柱查日/时地支
         $this->yZhuSearchDTZhi();
+        // 月支查四地支
+        $this->mZhiSearchDZhi();
     }
 
     /**
@@ -1148,13 +1187,15 @@ class ShenSha
             $this->$key[] = (in_array($row, self::$TYGR['data'][$this->yearGan]) or in_array($row, self::$TYGR['data'][$this->dayGan])) ? self::$TYGR['name'] : '';
             $this->$key[] = (in_array($row, self::$TJGR['data'][$this->yearGan]) or in_array($row, self::$TJGR['data'][$this->dayGan])) ? self::$TJGR['name'] : '';
             $this->$key[] = (in_array($row, self::$WCGR['data'][$this->yearGan]) or in_array($row, self::$WCGR['data'][$this->dayGan])) ? self::$WCGR['name'] : '';
+            $this->$key[] = (in_array($row, self::$JYGR['data'][$this->yearGan]) or in_array($row, self::$JYGR['data'][$this->dayGan])) ? self::$JYGR['name'] : '';
             $this->$key[] = (in_array($row, self::$GYGR['data'][$this->yearGan]) or in_array($row, self::$GYGR['data'][$this->dayGan])) ? self::$GYGR['name'] : '';
+            $this->$key[] = (isset(self::$TCGR['data'][$this->yearGan]) and in_array($row, self::$TCGR['data'][$this->yearGan])) ? self::$TCGR['name'] : '';
             $this->$key[] = (isset(self::$FXGR['data'][$this->yearGan]) and in_array($row, self::$FXGR['data'][$this->yearGan])) ? self::$FXGR['name'] : '';
         }
     }
 
     /**
-     * 月支查四柱干支
+     * 月支查四柱天干
      * @return void
      */
     private function mSearch4Gan()
@@ -1237,7 +1278,6 @@ class ShenSha
             $this->$key[] = (isset(self::$DW['data'][$this->dayZhi]) and in_array($row, self::$DW['data'][$this->dayZhi])) ? self::$DW['name'] : '';
             $this->$key[] = in_array($row, self::$JS['data'][$this->dayZhi]) ? self::$JS['name'] : '';
             $this->$key[] = in_array($row, self::$WS['data'][$this->dayZhi]) ? self::$WS['name'] : '';
-            $this->$key[] = (isset(self::$DK['data'][$this->dayZhi]) and in_array($row, self::$DK['data'][$this->dayZhi])) ? self::$DK['name'] : '';
             $this->$key[] = (isset(self::$PM['data'][$this->dayZhi]) and in_array($row, self::$PM['data'][$this->dayZhi])) ? self::$PM['name'] : '';
             $this->$key[] = (isset(self::$MS['data'][$this->dayZhi]) and in_array($row, self::$MS['data'][$this->dayZhi])) ? self::$MS['name'] : '';
         }
@@ -1258,11 +1298,14 @@ class ShenSha
             'dYunShenSha' => $this->dYunZhi,
         ];
         foreach ($dzhi as $key => $row) {
-            $this->$key[] = in_array($row, self::$JYGR['data'][$this->dayGan]) ? self::$JYGR['name'] : '';
             $this->$key[] = (isset(self::$TCGR['data'][$this->dayGan]) and in_array($row, self::$TCGR['data'][$this->dayGan])) ? self::$TCGR['name'] : '';
         }
     }
 
+    /**
+     * 年干查其余三地支
+     * @return void
+     */
     private function yGanSearch3Zhi()
     {
         $yGan = [
@@ -1274,8 +1317,6 @@ class ShenSha
             'dYunShenSha' => $this->dYunZhi,
         ];
         foreach ($yGan as $key => $row) {
-            $this->$key[] = in_array($row, self::$JYGR['data'][$this->yearGan]) ? self::$JYGR['name'] : '';
-            $this->$key[] = (isset(self::$TCGR['data'][$this->yearGan]) and in_array($row, self::$TCGR['data'][$this->yearGan])) ? self::$TCGR['name'] : '';
         }
     }
 
@@ -1299,7 +1340,9 @@ class ShenSha
             $this->$key[] = in_array($row, self::$YR['data'][$this->dayGan]) ? self::$YR['name'] : '';
             $this->$key[] = (isset(self::$LX['data'][$this->dayGan]) and in_array($row, self::$LX['data'][$this->dayGan])) ? self::$LX['name'] : '';
             $this->$key[] = (isset(self::$HYS['data'][$this->dayGan]) and in_array($row, self::$HYS['data'][$this->dayGan])) ? self::$HYS['name'] : '';
+            $this->$key[] = (isset(self::$TCGR['data'][$this->dayGan]) and in_array($row, self::$TCGR['data'][$this->dayGan])) ? self::$TCGR['name'] : '';
             $this->$key[] = (isset(self::$FXGR['data'][$this->dayGan]) and in_array($row, self::$FXGR['data'][$this->dayGan])) ? self::$FXGR['name'] : '';
+            $this->$key[] = (isset(self::$FR['data'][$this->dayGan]) and in_array($row, self::$FR['data'][$this->dayGan])) ? self::$FR['name'] : '';
         }
     }
 
@@ -1428,6 +1471,27 @@ class ShenSha
         $dGZ = $this->dayGan . $this->dayZhi;
         foreach ($dtZhi as $key => $row) {
             $this->$key[] = (isset(self::$TZS2['data'][$dGZ]) and in_array($row, self::$TZS2['data'][$dGZ])) ? self::$TZS2['name'] : '';
+        }
+    }
+
+    /**
+     * 月支查四地支
+     * @return void
+     */
+    private function mZhiSearchDZhi()
+    {
+        $zhi = [
+            'yearShenSha' => $this->yearZhi,
+            'monthShenSha' => $this->monthZhi,
+            'dayShenSha' => $this->dayZhi,
+            'timeShenSha' => $this->timeZhi,
+            'lYearShenSha' => $this->lYearZhi,
+            'lMonthShenSha' => $this->lMonthZhi,
+            'dYunShenSha' => $this->dYunZhi,
+        ];
+        foreach ($zhi as $key => $row) {
+            $this->$key[] = (isset(self::$XR['data'][$this->monthZhi]) and in_array($row, self::$XR['data'][$this->monthZhi])) ? self::$XR['name'] : '';
+            $this->$key[] = (isset(self::$TDGR['data'][$this->monthZhi]) and in_array($row, self::$TDGR['data'][$this->monthZhi])) ? self::$TDGR['name'] : '';
         }
     }
 }
