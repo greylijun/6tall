@@ -10,7 +10,7 @@ lunar是一款无第三方依赖的日历工具，支持公历(阳历)、农历(
 
 ## 示例
 
-    composer require lijun/6tall-lunar-php
+    composer require lijun/lunar-php
      
     <?php
     use com\nlf\calendar\Lunar;
